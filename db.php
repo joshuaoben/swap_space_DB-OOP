@@ -1,6 +1,6 @@
 <?php 
-include 'result.php';
-class DBconn
+//include 'result.php';
+class MYSQLIConnection
 {
 	private $_host;
 	private $_dbname;
@@ -17,8 +17,10 @@ class DBconn
 		$this->_db = mysqli_connect($host, $user, $password, $dbname) or die('unable to connect' . mysqli_error($this->_db));
 	}
 
-	public function getResult(){
-		return $this->_result = new Result($this->_db);
+	public function _query($sql){
+		$this->_result = new MYSQLIResult($this->_db, $sql);
+
+		return $this->_result;
 	}
 }
 ?>

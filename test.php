@@ -1,8 +1,12 @@
 <?php 
 include 'db.php';
-$fetch = new DBconn();
-$gotten = $fetch->getResult();
-print_r($gotten);
+include 'result.php';
 
+$db = new MYSQLIConnection();
 
+$result = $db->_query("SELECT * FROM test");
+
+while($row = $result->fetch(MYSQLIResult::FETCH_ARRAY)) {
+var_dump($row);
+}
 ?>
